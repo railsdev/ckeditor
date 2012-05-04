@@ -7,7 +7,7 @@ module Ckeditor
       module AssetBase
         def self.included(base)
           base.send(:include, ::MongoMapper::Document)
-          base.send(:include, ::MongoMapper::Timestamps)
+          # base.send(:include, ::MongoMapper::Timestamps)
           base.send(:include, Base::AssetBase::InstanceMethods)
           base.send(:include, InstanceMethods)
           base.send(:extend, ClassMethods)
@@ -30,7 +30,7 @@ module Ckeditor
               key :data_file_size,  Integer
               key :width,  Integer
               key :height,  Integer
-              
+              timestamps!
               belongs_to :assetable, :polymorphic => true
               
               attr_accessible :data, :assetable_type, :assetable_id, :assetable
